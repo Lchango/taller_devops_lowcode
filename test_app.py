@@ -1,10 +1,11 @@
 # test_app.py
 def test_main_output(capsys):
-    # Importa la función main de tu archivo app.py
-    import app
+    # Importa la función main de tu archivo principal. 
+    # NOTA: Usamos 'aplicacion' para que coincida con el nombre en GitHub.
+    import aplicacion
 
     # Ejecuta la función main
-    app.main()
+    aplicacion.main()
 
     # Captura la salida estándar (lo que se imprime)
     captured = capsys.readouterr()
