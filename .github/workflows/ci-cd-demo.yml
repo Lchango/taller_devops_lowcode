@@ -1,0 +1,32 @@
+# ci-cd-demo.yml
+name: Taller 7 - Pipeline DevOps + Low Code
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 1. Checkout del Código
+      uses: actions/checkout@v4
+    
+    - name: 2. Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: 3. Instalar Dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        
+    - name: 4. Ejecutar Pruebas Automáticas
+      run: pytest aplicacion_de_prueba.py  # ¡CORRECCIÓN FINAL! Apuntamos al nombre que está en GitHub.
+
+    - name: 5. Despliegue Simulado (Éxito)
+      run: echo "El pipeline pasó las pruebas. Despliegue simulado exitoso."
